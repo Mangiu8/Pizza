@@ -1,0 +1,17 @@
+﻿<style>
+    body {
+        background-image: url("/Content/img/panucci.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+    }
+</style>
+<main id="HomeMain" style="text-align: center; height: 65rem; display: flex; flex-direction: column; align-items: center; ">
+    <img src="~/Content/img/futurama.png" alt="Panucci's Pizza" style="width: 30rem; margin-bottom: 3rem; margin-top: 2rem;">
+    <div class="home-div">
+    <h1 class="mt-2">Benvenuto da Panucci's Pizza</h1>
+    <h3>La pizzeria piu veloce della citta</h3>
+        <p>Se non ricevi la pizza entro 30 minuti dall'ordine la pizza la offriamo noi</p>
+    </div>
+        <a href="@Url.Action("Index", "Prodotti", new { area = "" })" class="btn btn-primary bg-gradient mt-3">Ordina subito</a>
+</main>

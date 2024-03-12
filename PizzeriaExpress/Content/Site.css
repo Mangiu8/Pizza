@@ -1,0 +1,27 @@
+﻿/* Set padding to keep content from hitting the edges */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+body{
+    font-family: 'Bebas Neue', cursive;
+    background-color: firebrick;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.home-div {
+    background: firebrick;
+    width: 40rem;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: stretch;
+}
