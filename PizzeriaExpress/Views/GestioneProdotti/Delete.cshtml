@@ -8,7 +8,6 @@
 
 <h3>Sicuro di voler eliminare questo prodotto?</h3>
 <div>
-    <h4>Prodotti</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
@@ -21,12 +20,7 @@
                     <p class="card-text">Prezzo: @Model.Prezzo</p>
                     <p class="card-text">Consegna: @Model.Consegna</p>
                     <p class="card-text">Ingredienti: @Model.Ingredienti</p>
-                    @*@using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" value="Delete" class="btn btn-danger" />
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                    }*@
+                 
                 </div>
             </div>
         </div>
@@ -37,8 +31,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Elimina" class="btn btn-warning mb-2 bg-gradient" /> |
-            @Html.ActionLink("Torna alla lista", "Index")
+            <input type="submit" value="Elimina" class="btn btn-danger me-2 bg-gradient" /> |
+            @Html.ActionLink("Torna alla lista", "Index", new { @class = "btn btn-primary"})
         </div>
     }
 </div>

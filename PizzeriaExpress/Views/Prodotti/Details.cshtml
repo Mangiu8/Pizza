@@ -4,71 +4,32 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Dettagli</h2>
 
 <div>
-    <h4>Prodotti</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Prezzo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Consegna)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Consegna)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ingredienti)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ingredienti)
-        </dd>
-
-    </dl>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="~/Content/img/@Model.Foto" class="card-img" alt="Immagine del prodotto">
+                    <img src="~/Content/img/@Model.Foto2" class="card-img" alt="Immagine del prodotto">
+                    <img src="~/Content/img/@Model.Foto3" class="card-img" alt="Immagine del prodotto">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Nome</h5>
+                        <p class="card-text">Prezzo: @Model.Prezzo</p>
+                        <p class="card-text">Consegna: @Model.Consegna</p>
+                        <p class="card-text">Ingredienti: @Model.Ingredienti</p>
+                        @*@using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                        }*@
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProdotto }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <p>
+            @Html.ActionLink("Torna indietro", "Index", new { @class = "btn btn-secondary" })
+        </p>

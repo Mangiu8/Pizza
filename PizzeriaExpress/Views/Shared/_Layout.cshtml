@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
@@ -22,12 +22,18 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Carrello", "Index", "Carrello", new { area = "" }, new { @class = "nav-link" })</li>
-                    @if (User.Identity.IsAuthenticated)
+                    <li>@Html.ActionLink("| Home |", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Prodotti", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })</li>
-
+                        <li>@Html.ActionLink("| Carrello |", "Index", "Carrello", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("| Prodotti |", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="ms-auto">@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link " })</li>
+                    }
+                    else if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("| Prodotti  |", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })</li> 
+                        <li>@Html.ActionLink("| Gestione Utenti |", "Index", "Utenti", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("| Gestione Prodotti |", "Index", "GestioneProdotti", new { area = "" }, new { @class = "nav-link" })</li>
                         <li class="ms-auto">@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link " })</li>
                     }
                     else
@@ -42,7 +48,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Panucci's Pizza </p>
         </footer>
     </div>
 

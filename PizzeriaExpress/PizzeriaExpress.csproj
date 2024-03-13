@@ -164,6 +164,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CarrelloController.cs" />
+    <Compile Include="Controllers\GestioneProdottiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -248,12 +249,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Prodotti\Create.cshtml" />
     <Content Include="Views\Prodotti\Delete.cshtml" />
-    <Content Include="Views\Prodotti\Details.cshtml" />
     <Content Include="Views\Prodotti\Edit.cshtml" />
     <Content Include="Views\Prodotti\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Carrello\Index.cshtml" />
+    <Content Include="Views\GestioneProdotti\Create.cshtml" />
+    <Content Include="Views\GestioneProdotti\Delete.cshtml" />
+    <Content Include="Views\GestioneProdotti\Edit.cshtml" />
+    <Content Include="Views\GestioneProdotti\Index.cshtml" />
+    <Content Include="Views\Prodotti\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

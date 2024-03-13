@@ -4,7 +4,6 @@ namespace PizzeriaExpress.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Prodotti")]
     public partial class Prodotti
@@ -38,5 +37,6 @@ namespace PizzeriaExpress.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dettagli> Dettagli { get; set; }
+
     }
 }
