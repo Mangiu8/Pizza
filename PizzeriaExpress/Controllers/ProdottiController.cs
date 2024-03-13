@@ -38,13 +38,22 @@ namespace PizzeriaExpress.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id, int Quantita)
         {
             var prodotto = db.Prodotti.Find(id);
             if (prodotto != null)
             {
                 var cart = Session["cart"] as List<Prodotti> ?? new List<Prodotti>();
-                cart.Add(prodotto);
+                prodotto.Quantita = Quantita;
+                if (cart.Any(p => p.IdProdotto == id))
+                {
+                    var productInCart = cart.First(p => p.IdProdotto == id);
+                    productInCart.Quantita += Quantita;
+                }
+                else
+                {
+                    cart.Add(prodotto);
+                }
                 Session["cart"] = cart;
                 TempData["CreateMess"] = "Prodotto aggiunto al carrello";
             }

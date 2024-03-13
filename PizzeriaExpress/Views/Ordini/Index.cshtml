@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PizzeriaExpress.Models.Ordini>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ordini</h2>
+
+<table class="table bg-light shadow border-5">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Utenti.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evaso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Utenti.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indirizzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Totale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @if (item.Evaso == false)
+                {
+                    @Html.ActionLink("Evadi Ordine", "IsEvaso", new { id = item.IdOrdine }, new { @class = "btn btn-success rounded-5 bg-gradient" })
+                }
+                else
+                {
+                    @Html.ActionLink("Annulla", "IsEvaso", new { id = item.IdOrdine }, new { @class = "btn btn-danger rounded-5 bg-gradient" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

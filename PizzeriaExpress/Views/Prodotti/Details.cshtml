@@ -4,32 +4,40 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Dettagli</h2>
+<h2 class="text-center">Dettagli</h2>
 
 <div>
     <hr />
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/Content/img/@Model.Foto" class="card-img" alt="Immagine del prodotto">
-                    <img src="~/Content/img/@Model.Foto2" class="card-img" alt="Immagine del prodotto">
-                    <img src="~/Content/img/@Model.Foto3" class="card-img" alt="Immagine del prodotto">
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.Nome</h5>
-                        <p class="card-text">Prezzo: @Model.Prezzo</p>
-                        <p class="card-text">Consegna: @Model.Consegna</p>
-                        <p class="card-text">Ingredienti: @Model.Ingredienti</p>
-                        @*@using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-                            <input type="submit" value="Delete" class="btn btn-danger" />
-                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                        }*@
-                    </div>
+    <div class="row" style="display: flex; justify-content: space-around;">
+        <div class="col-md-4">
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; flex-wrap: wrap; align-content: space-around; align-items: center;">
+                <h2 class="">@Model.Nome</h2>
+                <div>
+                    <img src="~/Content/img/@Model.Foto" class="card-img mt-1" alt="Immagine del prodotto">
+                </div>
+                <div>
+                    <img src="~/Content/img/@Model.Foto2" class="card-img mt-1" alt="Immagine del prodotto">
+                </div>
+                <div>
+                    <img src="~/Content/img/@Model.Foto3" class="card-img mt-1" alt="Immagine del prodotto">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Prezzo: @Model.Prezzo</p>
+                    <p class="card-text">Consegna: @Model.Consegna</p>
+                    <p class="card-text">Ingredienti: @Model.Ingredienti</p>
                 </div>
             </div>
+            @using (Html.BeginForm("AddToCart", "Prodotti", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@Model.IdProdotto" />
+                <label for="Quantita">Quantità:</label>
+                <input id="Quantita" type="number" name="quantita" value="1" min="1" max="30">
+                <input type="submit" value="Aggiungi al carrello" class="btn btn-secondary bg-gradient rounded-5 mt-2">
+            }
+            <a href="@Url.Action("Index", "Prodotti")" class="btn btn-light bg-gradient rounded-5 mt-2">Torna indietro</a>
         </div>
+    </div>
 </div>
-        <p>
-            @Html.ActionLink("Torna indietro", "Index", new { @class = "btn btn-secondary" })
-        </p>
+
+

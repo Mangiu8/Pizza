@@ -30,7 +30,14 @@ namespace PizzeriaExpress.Controllers
                 var productToRemove = cart.FirstOrDefault(p => p.IdProdotto == id);
                 if (productToRemove != null)
                 {
-                    cart.Remove(productToRemove);
+                    if (productToRemove.Quantita > 1)
+                    {
+                        productToRemove.Quantita--;
+                    }
+                    else
+                    {
+                        cart.Remove(productToRemove);
+                    }
                 }
             }
             return RedirectToAction("Index");
@@ -60,8 +67,7 @@ namespace PizzeriaExpress.Controllers
                     Dettagli newDetail = new Dettagli();
                     newDetail.IdOrdine_FK = newOrder.IdOrdine;
                     newDetail.IdProdotto_FK = product.IdProdotto;
-                    newDetail.Quantita = 1;
-
+                    newDetail.Quantita = Convert.ToInt32(product.Quantita);
                     db.Dettagli.Add(newDetail);
                     db.SaveChanges();
                 }

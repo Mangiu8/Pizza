@@ -16,7 +16,8 @@ namespace PizzeriaExpress.Models
 
         [Key]
         public int IdProdotto { get; set; }
-
+        [NotMapped]
+        public int? Quantita { get; set; }
         [Required]
         [StringLength(50)]
         public string Nome { get; set; }

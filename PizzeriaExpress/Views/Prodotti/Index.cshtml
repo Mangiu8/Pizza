@@ -39,7 +39,15 @@
                 <p class="card-text text-truncate">Ingredienti: @item.Ingredienti</p>
                 <hr />
                 <a href="@Url.Action("Details", "Prodotti", new { id = item.IdProdotto })" class="btn btn-primary bg-gradient rounded-5">Dettagli</a>
-                <a href="@Url.Action("AddToCart", "Prodotti", new { id = item.IdProdotto })" class="btn btn-secondary bg-gradient rounded-5">Aggiungi al carrello</a>
+                @using (Html.BeginForm("AddToCart", "Prodotti", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@item.IdProdotto" />
+                    <label for="Quantita">Quantità:</label>
+                    <input id="Quantita" type="number" name="quantita" value="1" min="1" max="30">
+                    <input type="submit" value="Aggiungi al carrello" class="btn btn-success bg-gradient rounded-5">
+                }
+              
             </div>
             </div>
         </div>

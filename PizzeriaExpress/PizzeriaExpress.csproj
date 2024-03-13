@@ -166,6 +166,7 @@
     <Compile Include="Controllers\CarrelloController.cs" />
     <Compile Include="Controllers\GestioneProdottiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -198,7 +199,9 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\img\futurama.png" />
+    <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\img\panucci.jpeg" />
+    <Content Include="Content\img\scale.png" />
     <Content Include="Content\img\tip.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -259,6 +262,7 @@
     <Content Include="Views\GestioneProdotti\Edit.cshtml" />
     <Content Include="Views\GestioneProdotti\Index.cshtml" />
     <Content Include="Views\Prodotti\Details.cshtml" />
+    <Content Include="Views\Ordini\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

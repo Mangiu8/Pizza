@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<PizzeriaExpress.Models.Prodotti>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
 @using PizzeriaExpress.Models
 
@@ -18,7 +19,7 @@
 
                     <div class="col-7 d-flex flex-column">
                         <div>
-                            <h3 class="fs-4 mt-3">@item.Nome</h3>
+                            <h3 class="fs-4 mt-3">@item.Quantita x @item.Nome</h3>
                             <div class="mt-4 d-flex align-items-center">
                                 @Html.ActionLink(item.Prezzo.ToString("F2") + "€ - Rimuovi", "Delete", new { id = item.IdProdotto }, new { @class = "shadow btn btn-outline-danger w-100 rounded-pill" })
                             </div>
@@ -60,10 +61,10 @@
                         <h3 class="fs-4 my-3 fw-bolder">Riepilogo ordine</h3>
                         @foreach (var item in Model)
                         {
-                            <p>1x @item.Nome - @item.Prezzo.ToString("F2")€</p>
+                            <p>@item.Quantita x @item.Nome - @item.Prezzo.ToString("F2")€</p>
                         }
 
-                        <textarea placeholder="Note aggiuntive sul tuo ordine..." id="note" name="note" required class="form-control bg-white rounded-3" rows="3" style="resize: none;"></textarea>
+                        <textarea placeholder="Note aggiuntive sul tuo ordine..." id="note" name="note" class="form-control bg-white rounded-3" rows="3" style="resize: none;"></textarea>
                         @{
                             double mediaMinuti = Model.Average(item => item.Consegna.TotalMinutes);
                             TimeSpan mediaConsegna = TimeSpan.FromMinutes(mediaMinuti);
