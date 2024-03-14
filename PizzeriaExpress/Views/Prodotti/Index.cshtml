@@ -1,6 +1,51 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    @if (TempData["Login"] != null)
+    {
+        <text>
+    toastr.success('@TempData["Login"]');
+        </text>
+    }
+    @if (TempData["AddCart"] != null)
+    {
+        <text>
+    toastr.info('@TempData["AddCart"]');
+        </text>
+    }
+    @if (TempData["Ordine"] != null)
+    {
+        <text>
+    toastr.info('@TempData["Ordine"]');
+        </text>
+    }
+    @if (TempData["CartEmpty"] != null)
+    {
+        <text>
+            toastr.warning('@TempData["CartEmpty"]');
+        </text>
+    }
+</script>
 
 <h1 class="text-center">Le Nostre Pizze</h1>
 
@@ -31,6 +76,7 @@
                         <img src="~/Content/img/@item.Foto3" style="height: 285px; width: 285px" class="rounded-4 mt-2" alt="...">
                     </div>
                 </div>           
+            </div>
 
             <div class="card-body">
                 <h5 class="card-title">@item.Nome</h5>
@@ -47,10 +93,7 @@
                     <input id="Quantita" type="number" name="quantita" value="1" min="1" max="30">
                     <input type="submit" value="Aggiungi al carrello" class="btn btn-success bg-gradient rounded-5">
                 }
-              
-            </div>
             </div>
         </div>
     }
 </div>
-

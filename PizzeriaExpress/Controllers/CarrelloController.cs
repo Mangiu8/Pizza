@@ -17,6 +17,7 @@ namespace PizzeriaExpress.Controllers
             var cart = Session["cart"] as List<Prodotti>;
             if (cart == null || !cart.Any())
             {
+                TempData["CartEmpty"] = "Il carrello è vuoto";
                 return RedirectToAction("Index", "Prodotti");
             }
             return View(cart);
@@ -73,6 +74,7 @@ namespace PizzeriaExpress.Controllers
                 }
                 cart.Clear();
             }
+            TempData["Ordine"] = "L'ordine è stato inviato correttamente";
             return RedirectToAction("Index", "Prodotti");
         }
     }

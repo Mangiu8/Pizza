@@ -1,7 +1,52 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+@if (TempData["Login"] != null)
+{
+    <text>
+    toastr.success('@TempData["Login"]');
+    </text>
 
+}
+@if (TempData["CreateMessage"] != null)
+{
+    <text>
+    toastr.info('@TempData["CreateMessage"]');
+    </text>
+}
+    @if (TempData["EditMessage"] != null)
+{
+    <text>
+        toastr.success('@TempData["EditMessage"]');
+    </text>
+    }
+@if (TempData["DeleteMessage"] != null)
+{
+    <text>
+        toastr.error('@TempData["DeleteMessage"]');
+    </text>
+}
+</script>
 <h1 class="text-center">Prodotti</h1>
 <a href="@Url.Action("Create", "GestioneProdotti")" class="btn btn-secondary bg-gradient rounded-5 mb-2">Aggiungi prodotto</a>
 
@@ -17,33 +62,33 @@
 }
 
 <div class="row">
-           @foreach (var item in Model)
-           {
-               <div class="card m-2" style="width: 312px; display: flex; flex-direction: column; justify-content: space-between; ">
-                   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                       <div class="carousel-inner">
-                           <div class="carousel-item active">
-                               <img src="~/Content/img/@item.Foto" style="height: 285px; width:285px" class="rounded-4 mt-2" alt="...">
-                           </div>
-                           <div class="carousel-item">
-                               <img src="~/Content/img/@item.Foto2" style="height: 285px; width: 285px" class="rounded-4 mt-2" alt="...">
-                           </div>
-                           <div class="carousel-item">
-                               <img src="~/Content/img/@item.Foto3" style="height: 285px; width: 285px" class="rounded-4 mt-2" alt="...">
-                           </div>
-                       </div>
+    @foreach (var item in Model)
+    {
+        <div class="card m-2" style="width: 312px; display: flex; flex-direction: column; justify-content: space-between; ">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/Content/img/@item.Foto" style="height: 285px; width:285px" class="rounded-4 mt-2" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/img/@item.Foto2" style="height: 285px; width: 285px" class="rounded-4 mt-2" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/img/@item.Foto3" style="height: 285px; width: 285px" class="rounded-4 mt-2" alt="...">
+                    </div>
+                </div>
 
-                       <div class="card-body">
-                           <h5 class="card-title">@item.Nome</h5>
-                           <p class="card-text">Prezzo: @item.Prezzo.ToString("0.00") €</p>
-                           <p class="card-text">Consegna: @item.Consegna.ToString("hh\\:mm") minuti</p>
-                           <p class="card-text text-truncate">Ingredienti: @item.Ingredienti</p>
-                           <hr />
-                           <a href="@Url.Action("Edit", "GestioneProdotti", new { id = item.IdProdotto })" class="btn btn-warning bg-gradient rounded-5">Modifica</a>
-                           <a href="@Url.Action("Delete", "GestioneProdotti", new { id = item.IdProdotto })" class="btn btn-danger bg-gradient rounded-5">Elimina</a>
-                       </div>
-                   </div>
-               </div>
-           }
-       </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nome</h5>
+                    <p class="card-text">Prezzo: @item.Prezzo.ToString("0.00") €</p>
+                    <p class="card-text">Consegna: @item.Consegna.ToString("hh\\:mm") minuti</p>
+                    <p class="card-text text-truncate">Ingredienti: @item.Ingredienti</p>
+                    <hr />
+                    <a href="@Url.Action("Edit", "GestioneProdotti", new { id = item.IdProdotto })" class="btn btn-warning bg-gradient rounded-5">Modifica</a>
+                    <a href="@Url.Action("Delete", "GestioneProdotti", new { id = item.IdProdotto })" class="btn btn-danger bg-gradient rounded-5">Elimina</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 

@@ -18,21 +18,6 @@ namespace PizzeriaExpress.Controllers
         }
 
 
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prodotti prodotti = db.Prodotti.Find(id);
-            if (prodotti == null)
-            {
-                return HttpNotFound();
-            }
-            return View(prodotti);
-        }
-
-
         public ActionResult Create()
         {
             return View();
@@ -43,6 +28,7 @@ namespace PizzeriaExpress.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["CreateMessage"] = "Prodotto " + prodotti.Nome + " creato con successo!";
                 db.Prodotti.Add(prodotti);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -75,6 +61,7 @@ namespace PizzeriaExpress.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["EditMessage"] = "Prodotto " + prodotti.Nome + " modificato con successo!";
                 db.Entry(prodotti).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,6 +89,7 @@ namespace PizzeriaExpress.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            TempData["DeleteMessage"] = "Prodotto eliminato con successo!";
             Prodotti prodotti = db.Prodotti.Find(id);
             db.Prodotti.Remove(prodotti);
             db.SaveChanges();

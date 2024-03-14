@@ -6,12 +6,39 @@
         color: white;
     }
 </style>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    @if (TempData["LogoutMess"] != null)
+    {
+        <text>
+            toastr.error('@TempData["LogoutMess"]');
+        </text>
+    };
+</script>
 <main id="HomeMain" style="text-align: center; height: 54.3rem; display: flex; flex-direction: column; align-items: center; ">
     <img src="~/Content/img/logo.jpg" alt="Panucci's Pizza" style="width: 30rem; margin-bottom: 3rem; margin-top: 2rem;">
     <div class="home-div" style="box-shadow: 4px 5rem 1rem 0px rgba(0, 0, 0, 0.15); border: double;">
-    <h1 style="text-shadow: 3px 2px black;" class="mt-2 ">Benvenuto da Panucci's Pizza</h1>
-    <h3 style="text-shadow: 3px 2px black;">La pizzeria piu veloce della citta</h3>
+        <h1 style="text-shadow: 3px 2px black;" class="mt-2 ">Benvenuto da Panucci's Pizza</h1>
+        <h3 style="text-shadow: 3px 2px black;">La pizzeria piu veloce della citta</h3>
         <p style="text-shadow: 3px 2px black;">Se non ricevi la pizza entro 30 minuti dall'ordine la pizza la offriamo noi</p>
     </div>
-        <a href="@Url.Action("Index", "Prodotti", new { area = "" })" class="btn btn-danger bg-gradient mt-3" style="width: 15rem;">Ordina subito</a>
+    <a href="@Url.Action("Index", "Prodotti", new { area = "" })" class="btn btn-danger bg-gradient mt-3" style="width: 15rem;">Ordina subito</a>
 </main>

@@ -55,7 +55,7 @@ namespace PizzeriaExpress.Controllers
                     cart.Add(prodotto);
                 }
                 Session["cart"] = cart;
-                TempData["CreateMess"] = "Prodotto aggiunto al carrello";
+                TempData["AddCart"] = "Prodotto aggiunto al carrello";
             }
             return RedirectToAction("Index");
         }

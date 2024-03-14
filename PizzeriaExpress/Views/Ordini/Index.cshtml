@@ -4,8 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Ordini</h2>
 
+<h2>Ordini</h2>
+@Html.ActionLink("Totale ordini evasi", "GetNumeroOrdini", new { }, new { @class = "bi bi-arrow-bar-right btn btn-success rounded-5 bg-gradient mb-2", @onclick = "totalOrders(); return false;" })
+<p id="totalOrders" class="text-white"></p>
+<input type="date" id="date" class="form-control w-25" />
+<button class="btn btn-success rounded-5 bg-gradient mb-2 mt-2" onclick="getRevenueForDay(document.getElementById('date').value)">Totale incassato</button>
+<p id="totPerGiorno" class="text-white"></p>
 <table class="table bg-light shadow border-5">
     <tr>
         <th>
@@ -64,3 +69,66 @@
     }
 
 </table>
+
+<script>
+function totalOrders() {
+    $.ajax({
+        url: '@Url.Action("GetNumeroOrdini", "Ordini")',
+        type: 'GET',
+        success: function (data) {
+            $('#totalOrders').text('Ordini Evasi: ' + data);
+        },
+        error: function () {
+            $('#totalOrders').text('Errore.');
+        }
+    });
+    }
+    function getRevenueForDay(date) {
+    $.ajax({
+        url: '@Url.Action("IncassatoPerGiorno", "Ordini")',
+        type: 'GET',
+        data: { data: date },
+        success: function (data) {
+            // Display the revenue in the console or update the UI as needed
+            console.log('Revenue for ' + date + ': ' + data);
+$('#totPerGiorno').text('Incasso per il giorno ' + date + ': ' + data + '€');
+        },
+        error: function () {
+            console.log('Error retrieving revenue for ' + date);
+        }
+    });
+}
+</script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    @if (TempData["Message1"] != null)
+    {
+        <text>
+    toastr.success('@TempData["Message1"]');
+        </text>
+    }
+    @if (TempData["Message2"] != null)
+    {
+        <text>
+    toastr.info('@TempData["Message2"]');
+        </text>
+    }
+</script>
