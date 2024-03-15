@@ -29,12 +29,12 @@ namespace PizzeriaExpress.Controllers
                     FormsAuthentication.SetAuthCookie(email, false);
                     if (user.isAdmin)
                     {
-                        TempData["Login"] = "Benvenuto " + user.Nome + " " + user.Cognome + " [Admin]";
+                        TempData["Login"] = "Benvenuto/a " + user.Nome + " " + user.Cognome + " [Admin]";
                         return RedirectToAction("Index", "GestioneProdotti");
                     }
                     else
                     {
-                        TempData["Login"] = "Benvenuto " + user.Nome + " " + user.Cognome;
+                        TempData["Login"] = "Benvenuto/a " + user.Nome + " " + user.Cognome;
                         return RedirectToAction("Index", "Prodotti");
                     }
                 }
@@ -50,6 +50,7 @@ namespace PizzeriaExpress.Controllers
             return View();
         }
         [HttpPost]
+
         public ActionResult Register(Utenti utente)
         {
             using (var context = new ModelDBContext())
@@ -57,7 +58,7 @@ namespace PizzeriaExpress.Controllers
                 context.Utenti.Add(utente);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Prodotti");
         }
         public ActionResult Logout()
         {

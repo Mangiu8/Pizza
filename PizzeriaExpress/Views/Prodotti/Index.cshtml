@@ -81,7 +81,7 @@
             <div class="card-body">
                 <h5 class="card-title">@item.Nome</h5>
                 <p class="card-text">Prezzo: @item.Prezzo.ToString("0.00") €</p>
-                <p class="card-text">Consegna: @item.Consegna.ToString("hh\\:mm") minuti</p>
+                <p class="card-text">Consegna: @item.Consegna.ToString("mm") minuti</p>
                 <p class="card-text text-truncate">Ingredienti: @item.Ingredienti</p>
                 <hr />
                 <a href="@Url.Action("Details", "Prodotti", new { id = item.IdProdotto })" class="btn btn-primary bg-gradient rounded-5">Dettagli</a>
